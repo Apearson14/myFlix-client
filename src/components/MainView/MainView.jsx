@@ -9,21 +9,21 @@ import { MovieView } from "../MovieView/MovieView";
                 id: 1,
                 title: "Step Brothers",
                 image:
-                "https://www.imdb.com/title/tt0838283/mediaviewer/rm3433645824/?ref_=ext_shr_lnk",
+                "m.media-amazon.com/images/M/MV5BODViZDg3ZjYtMzhiYS00YTVkLTk4MzktYWUxMTlkYjc1NjdlXkEyXkFqcGdeQXVyMTMxODk2OTU@.V1_FMjpg_UX1079.jpg",
                 director: "Adam McKay"
             },
             {
                 id: 2,
                 title: "300",
                 image:
-                "https://www.imdb.com/title/tt0416449/mediaviewer/rm1847235072/?ref_=ext_shr_lnk",
+                "https://m.media-amazon.com/images/I/811XNNbIaML._AC_SX679_.jpg",
                 director: "Zack Snyder"
             },
             {
                 id: 3,
                 title: "Grown ups",
                 image: 
-                "https://www.imdb.com/title/tt1375670/mediaviewer/rm3949694720/?ref_=ext_shr_lnk",
+                "https://m.media-amazon.com/images/I/71LYatfiX-L._AC_SX679_.jpg",
                 director: "Dennis Dungan"
             },
         ]);
