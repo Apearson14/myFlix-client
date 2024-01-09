@@ -27492,14 +27492,14 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Author: "
+                        children: "Director: "
                     }, void 0, false, {
                         fileName: "src/components/MovieView/MovieView.jsx",
                         lineNumber: 12,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.author
+                        children: movie.director
                     }, void 0, false, {
                         fileName: "src/components/MovieView/MovieView.jsx",
                         lineNumber: 13,
