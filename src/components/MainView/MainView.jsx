@@ -9,7 +9,7 @@ import { MovieView } from "../MovieView/MovieView";
                 id: 1,
                 title: "Step Brothers",
                 image:
-                "m.media-amazon.com/images/M/MV5BODViZDg3ZjYtMzhiYS00YTVkLTk4MzktYWUxMTlkYjc1NjdlXkEyXkFqcGdeQXVyMTMxODk2OTU@.V1_FMjpg_UX1079.jpg",
+                "https://m.media-amazon.com/images/I/71+om8y2lNL._AC_SL1500_.jpg",
                 director: "Adam McKay"
             },
             {
