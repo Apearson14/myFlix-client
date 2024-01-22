@@ -27189,30 +27189,30 @@ const MainView = ()=>{
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
         lineNumber: 19,
-        columnNumber: 13
+        columnNumber: 7
     }, undefined);
-    if (movie.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
         lineNumber: 24,
-        columnNumber: 18
+        columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movie.map((movie1)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie1,
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
                 onMovieClick: (newSelectedMovie)=>{
                     setSelectedMovie(newSelectedMovie);
                 }
-            }, movie1.id, false, {
+            }, movie.id, false, {
                 fileName: "src/components/MainView/MainView.jsx",
                 lineNumber: 30,
-                columnNumber: 15
+                columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
         lineNumber: 28,
-        columnNumber: 11
+        columnNumber: 5
     }, undefined);
 };
 _s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
