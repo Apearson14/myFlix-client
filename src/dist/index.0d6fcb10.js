@@ -27181,7 +27181,11 @@ const MainView = ()=>{
         {
             id: 1,
             title: "Step Brothers",
+<<<<<<< HEAD
             image: "m.media-amazon.com/images/M/MV5BODViZDg3ZjYtMzhiYS00YTVkLTk4MzktYWUxMTlkYjc1NjdlXkEyXkFqcGdeQXVyMTMxODk2OTU@.V1_FMjpg_UX1079.jpg",
+=======
+            image: "https://m.media-amazon.com/images/I/71+om8y2lNL._AC_SL1500_.jpg",
+>>>>>>> ed0aaa42a9be3469be0df407efd87eaaa3020067
             director: "Adam McKay"
         },
         {
@@ -27230,7 +27234,11 @@ const MainView = ()=>{
         columnNumber: 11
     }, undefined);
 };
+<<<<<<< HEAD
 _s(MainView, "QbNk39wr/ZbliO4geNm0JaCfa0g=");
+=======
+_s(MainView, "braxs6MbK2OGazYX9Y81sEBa/ps=");
+>>>>>>> ed0aaa42a9be3469be0df407efd87eaaa3020067
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
