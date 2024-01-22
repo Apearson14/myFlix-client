@@ -27177,68 +27177,45 @@ var _movieView = require("../MovieView/MovieView");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movie, setMovie] = (0, _react.useState)([
-        {
-            id: 1,
-            title: "Step Brothers",
-<<<<<<< HEAD
-            image: "m.media-amazon.com/images/M/MV5BODViZDg3ZjYtMzhiYS00YTVkLTk4MzktYWUxMTlkYjc1NjdlXkEyXkFqcGdeQXVyMTMxODk2OTU@.V1_FMjpg_UX1079.jpg",
-=======
-            image: "https://m.media-amazon.com/images/I/71+om8y2lNL._AC_SL1500_.jpg",
->>>>>>> ed0aaa42a9be3469be0df407efd87eaaa3020067
-            director: "Adam McKay"
-        },
-        {
-            id: 2,
-            title: "300",
-            image: "https://m.media-amazon.com/images/I/811XNNbIaML._AC_SX679_.jpg",
-            director: "Zack Snyder"
-        },
-        {
-            id: 3,
-            title: "Grown ups",
-            image: "https://m.media-amazon.com/images/I/71LYatfiX-L._AC_SX679_.jpg",
-            director: "Dennis Dungan"
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        // Fetch data from the provided link
+        fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies").then((response)=>response.json()).then((data)=>setMovies(data)).catch((error)=>console.error("Error fetching movies:", error));
+    }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
-        lineNumber: 34,
+        lineNumber: 19,
         columnNumber: 13
     }, undefined);
     if (movie.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
-        lineNumber: 39,
+        lineNumber: 24,
         columnNumber: 18
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movie.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
+        children: movie.map((movie1)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie1,
                 onMovieClick: (newSelectedMovie)=>{
                     setSelectedMovie(newSelectedMovie);
                 }
-            }, movie.id, false, {
+            }, movie1.id, false, {
                 fileName: "src/components/MainView/MainView.jsx",
-                lineNumber: 45,
+                lineNumber: 30,
                 columnNumber: 15
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
-        lineNumber: 43,
+        lineNumber: 28,
         columnNumber: 11
     }, undefined);
 };
-<<<<<<< HEAD
-_s(MainView, "QbNk39wr/ZbliO4geNm0JaCfa0g=");
-=======
-_s(MainView, "braxs6MbK2OGazYX9Y81sEBa/ps=");
->>>>>>> ed0aaa42a9be3469be0df407efd87eaaa3020067
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
