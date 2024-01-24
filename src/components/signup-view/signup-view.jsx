@@ -1,4 +1,4 @@
-import{ useState } from "react";
+import React, { useState } from "react";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -6,7 +6,36 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
+    };
+
+    fetch("https://austins-movies-98c87d76c471.herokuapp.com/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful");
+          window.location.reload();
+        } else {
+          alert("Signup failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during signup:", error);
+        alert("Something went wrong during signup");
+      });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,29 +80,3 @@ export const SignupView = () => {
     </form>
   );
 };
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const data = {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    };
-
-    fetch("https://austins-movies-98c87d76c471.herokuapp.com/users", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        alert("Signup successful");
-        window.location.reload();
-      } else {
-        alert("Signup failed");
-      }
-    });
-  };
