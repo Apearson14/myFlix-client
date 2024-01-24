@@ -62,7 +62,7 @@ const handleSubmit = (event) => {
       Birthday: birthday
     };
 
-    fetch("SIGNUP_URL", {
+    fetch("https://austins-movies-98c87d76c471.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
