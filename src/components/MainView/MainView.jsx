@@ -26,6 +26,14 @@ export const MainView = () => {
       .catch((error) => console.error("Error fetching movies:", error));
   }, [token]);
 
+  if (!user) {
+    return (
+      <>
+        <SignupView />
+      </>
+    );
+  }
+
   return (
     <>
       {user && (
