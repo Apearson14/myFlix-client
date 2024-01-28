@@ -11,28 +11,28 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
-
-    if (storedUser && storedToken) {
-      setUser(storedUser);
-      setToken(storedToken);
-
-      // Fetch data from the authenticated endpoint
-      fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => setMovies(data))
-        .catch((error) => console.error("Error fetching movies:", error));
+    if (!token) {
+      return;
     }
-  }, []);
 
-  const handleMovieClick = (newSelectedMovie) => {
-    setSelectedMovie(newSelectedMovie);
-  };
+    // Fetch data from the provided link
+    fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => setMovies(data))
+      .catch((error) => console.error("Error fetching movies:", error));
+  }, [token]);
+
+  if (!user) {
+    return (
+      <>
+        <SignupView />
+      </>
+    );
+  }
 
   return (
     <>
@@ -59,7 +59,9 @@ export const MainView = () => {
             <MovieCard
               key={movie.id}
               movie={movie}
-              onMovieClick={handleMovieClick}
+              onMovieClick={(newSelectedMovie) => {
+                setSelectedMovie(newSelectedMovie);
+              }}
             />
           ))}
         </div>
