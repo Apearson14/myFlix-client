@@ -27185,23 +27185,22 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        if (!token) return;
-        // Fetch data from the provided link
-        fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()).then((data)=>setMovies(data)).catch((error)=>console.error("Error fetching movies:", error));
-    }, [
-        token
-    ]);
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
-            fileName: "src/components/MainView/MainView.jsx",
-            lineNumber: 32,
-            columnNumber: 9
-        }, undefined)
-    }, void 0, false);
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        const storedToken = localStorage.getItem("token");
+        if (storedUser && storedToken) {
+            setUser(storedUser);
+            setToken(storedToken);
+            // Fetch data from the authenticated endpoint
+            fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
+                headers: {
+                    Authorization: `Bearer ${storedToken}`
+                }
+            }).then((response)=>response.json()).then((data)=>setMovies(data)).catch((error)=>console.error("Error fetching movies:", error));
+        }
+    }, []);
+    const handleMovieClick = (newSelectedMovie)=>{
+        setSelectedMovie(newSelectedMovie);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27230,9 +27229,7 @@ const MainView = ()=>{
             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: movie,
-                        onMovieClick: (newSelectedMovie)=>{
-                            setSelectedMovie(newSelectedMovie);
-                        }
+                        onMovieClick: handleMovieClick
                     }, movie.id, false, {
                         fileName: "src/components/MainView/MainView.jsx",
                         lineNumber: 59,
