@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieView } from "../MovieView/MovieView";
 import { LoginView } from "../login-view/login-view";
@@ -28,28 +29,40 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <>
-        <LoginView onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }} />
-        or
-        <SignupView />
-      </>
+      <Container>
+        <Row>
+          <Col>
+            <LoginView onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }} />
+          </Col>
+          <Col>
+            or
+          </Col>
+          <Col>
+            <SignupView />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 
   return (
-    <>
-      {user && (
-        <button
-          onClick={() => {
-            setUser(null);
-          }}
-        >
-          Logout
-        </button>
-      )}
+    <Container>
+      <Row>
+        <Col>
+          {user && (
+            <button
+              onClick={() => {
+                setUser(null);
+              }}
+            >
+              Logout
+            </button>
+          )}
+        </Col>
+      </Row>
 
       {selectedMovie ? (
         <MovieView
@@ -57,20 +70,25 @@ export const MainView = () => {
           onBackClick={() => setSelectedMovie(null)}
         />
       ) : movies.length === 0 ? (
-        <div>The list is empty!</div>
+        <Row>
+          <Col>
+            <div>The list is empty!</div>
+          </Col>
+        </Row>
       ) : (
-        <div>
+        <Row>
           {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-              }}
-            />
+            <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>
+              <MovieCard
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  setSelectedMovie(newSelectedMovie);
+                }}
+              />
+            </Col>
           ))}
-        </div>
+        </Row>
       )}
-    </>
+    </Container>
   );
 };
