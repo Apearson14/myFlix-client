@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieView } from "../MovieView/MovieView";
 import { LoginView } from "../login-view/login-view";
@@ -16,7 +16,7 @@ export const MainView = () => {
       return;
     }
 
-    
+    // Fetch data from the provided link
     fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
       headers: {
         Authorization: `Bearer ${token}`
@@ -30,19 +30,26 @@ export const MainView = () => {
   return (
     <Router>
       <Container>
-        <Row>
-          <Col>
-            {user ? (
-              <Link to="/logout">Logout</Link>
-            ) : (
-              <>
-                <Link to="/login">Login</Link>
-                <span> or </span>
-                <Link to="/signup">Signup</Link>
-              </>
-            )}
-          </Col>
-        </Row>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand as={Link} to="/">MyFlix</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              {!user ? (
+                <>
+                  <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                  <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/">Home</Nav.Link>
+                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <Routes>
           <Route
@@ -59,6 +66,10 @@ export const MainView = () => {
           <Route
             path="/logout"
             element={<Navigate to="/" replace />}
+          />
+          <Route
+            path="/profile"
+            element={<div>Profile View (create your ProfileView component)</div>}
           />
           <Route
             path="/movies/:movieId"
