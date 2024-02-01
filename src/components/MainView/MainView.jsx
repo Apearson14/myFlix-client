@@ -17,7 +17,7 @@ export const MainView = () => {
       return;
     }
 
-    
+    // Fetch data from the provided link
     fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
       headers: {
         Authorization: `Bearer ${token}`
@@ -28,12 +28,12 @@ export const MainView = () => {
       .catch((error) => console.error("Error fetching movies:", error));
   }, [token]);
 
-  
+  // Define the function to be passed to ProfileView for updating user information
   const handleUpdateUser = (updatedUser) => {
     setUser(updatedUser);
   };
 
- 
+  // Define the function to be passed to ProfileView for deregistering the user
   const handleDeregister = () => {
     setUser(null);
     setToken(null);
@@ -41,13 +41,14 @@ export const MainView = () => {
 
   // Define the function to toggle favorite status
   const handleToggleFavorite = (selectedMovie) => {
-   
+    // Perform the logic to toggle the favorite status of the movie
+    // This could involve updating the user's data on the server or locally
     console.log(`Toggling favorite for movie: ${selectedMovie.title}`);
   };
 
   return (
     <Router>
-      <Container>
+      <Container fluid>
         <Navbar bg="light" expand="lg">
           <Navbar.Brand as={Link} to="/">MyFlix</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -106,7 +107,7 @@ export const MainView = () => {
                 <Row>
                   {movies.map((movie) => (
                     <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>
-                      
+                      {/* Pass onToggleFavorite to MovieCard */}
                       <MovieCard movie={movie} onToggleFavorite={handleToggleFavorite} />
                     </Col>
                   ))}
