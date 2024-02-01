@@ -10,14 +10,13 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     if (!token) {
       return;
     }
 
-    // Fetch data from the provided link
+    
     fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
       headers: {
         Authorization: `Bearer ${token}`
@@ -63,19 +62,12 @@ export const MainView = () => {
           />
           <Route
             path="/movies/:movieId"
-            element={
-              <MovieView
-                movies={movies}
-                onBackClick={() => setSelectedMovie(null)}
-              />
-            }
+            element={<MovieView movies={movies} />}
           />
           <Route
             path="/"
             element={
-              selectedMovie ? (
-                <Navigate to={`/movies/${selectedMovie.id}`} />
-              ) : movies.length === 0 ? (
+              movies.length === 0 ? (
                 <Row>
                   <Col>
                     <div>The list is empty!</div>
@@ -85,12 +77,7 @@ export const MainView = () => {
                 <Row>
                   {movies.map((movie) => (
                     <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>
-                      <MovieCard
-                        movie={movie}
-                        onMovieClick={() => {
-                          setSelectedMovie(movie);
-                        }}
-                      />
+                      <MovieCard movie={movie} />
                     </Col>
                   ))}
                 </Row>
@@ -102,4 +89,3 @@ export const MainView = () => {
     </Router>
   );
 };
-
