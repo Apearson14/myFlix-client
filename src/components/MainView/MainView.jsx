@@ -4,6 +4,7 @@ import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieView } from "../MovieView/MovieView";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -26,6 +27,17 @@ export const MainView = () => {
       .then((data) => setMovies(data))
       .catch((error) => console.error("Error fetching movies:", error));
   }, [token]);
+
+  // Define the function to be passed to ProfileView for updating user information
+  const handleUpdateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
+  // Define the function to be passed to ProfileView for deregistering the user
+  const handleDeregister = () => {
+    setUser(null);
+    setToken(null);
+  };
 
   return (
     <Router>
@@ -69,7 +81,7 @@ export const MainView = () => {
           />
           <Route
             path="/profile"
-            element={<div>Profile View (create your ProfileView component)</div>}
+            element={<ProfileView movies={movies} onUpdateUser={handleUpdateUser} onDeregister={handleDeregister} />}
           />
           <Route
             path="/movies/:movieId"
