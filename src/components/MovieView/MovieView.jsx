@@ -1,7 +1,12 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movie, onBackClick, onToggleFavorite }) => {
+  const handleFavoriteClick = () => {
+    // Call the onToggleFavorite function and pass the movie as an argument
+    onToggleFavorite(movie);
+  };
+
   return (
     <Container>
       <Row>
@@ -20,8 +25,10 @@ export const MovieView = ({ movie, onBackClick }) => {
           <div>
             <h3>Description:</h3>
             <p>{movie.description}</p>
-          </div>  
+          </div>
           <Button onClick={onBackClick}>Back</Button>
+
+          <Button onClick={handleFavoriteClick}>Favorite</Button>
         </Col>
       </Row>
     </Container>
