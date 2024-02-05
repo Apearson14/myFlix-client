@@ -27189,12 +27189,12 @@ var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
+    const storedToken = localStorage.getItem("token");
+    const [token, setToken] = (0, _react.useState)(storedToken || null);
     const [user, setUser] = (0, _react.useState)(null);
-    const [token, setToken] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        // Fetch data from the provided link
         fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27203,19 +27203,14 @@ const MainView = ()=>{
     }, [
         token
     ]);
-    // Define the function to be passed to ProfileView for updating user information
     const handleUpdateUser = (updatedUser)=>{
         setUser(updatedUser);
     };
-    // Define the function to be passed to ProfileView for deregistering the user
     const handleDeregister = ()=>{
         setUser(null);
         setToken(null);
     };
-    // Define the function to toggle favorite status
     const handleToggleFavorite = (selectedMovie)=>{
-        // Perform the logic to toggle the favorite status of the movie
-        // This could involve updating the user's data on the server or locally
         console.log(`Toggling favorite for movie: ${selectedMovie.title}`);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
@@ -27232,14 +27227,14 @@ const MainView = ()=>{
                             children: "MyFlix"
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 53,
+                            lineNumber: 55,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
                             "aria-controls": "basic-navbar-nav"
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 54,
+                            lineNumber: 56,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
@@ -27254,7 +27249,7 @@ const MainView = ()=>{
                                             children: "Login"
                                         }, void 0, false, {
                                             fileName: "src/components/MainView/MainView.jsx",
-                                            lineNumber: 59,
+                                            lineNumber: 61,
                                             columnNumber: 19
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -27263,7 +27258,7 @@ const MainView = ()=>{
                                             children: "Signup"
                                         }, void 0, false, {
                                             fileName: "src/components/MainView/MainView.jsx",
-                                            lineNumber: 60,
+                                            lineNumber: 62,
                                             columnNumber: 19
                                         }, undefined)
                                     ]
@@ -27275,7 +27270,7 @@ const MainView = ()=>{
                                             children: "Home"
                                         }, void 0, false, {
                                             fileName: "src/components/MainView/MainView.jsx",
-                                            lineNumber: 64,
+                                            lineNumber: 66,
                                             columnNumber: 19
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -27284,7 +27279,7 @@ const MainView = ()=>{
                                             children: "Profile"
                                         }, void 0, false, {
                                             fileName: "src/components/MainView/MainView.jsx",
-                                            lineNumber: 65,
+                                            lineNumber: 67,
                                             columnNumber: 19
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -27293,40 +27288,44 @@ const MainView = ()=>{
                                             children: "Logout"
                                         }, void 0, false, {
                                             fileName: "src/components/MainView/MainView.jsx",
-                                            lineNumber: 66,
+                                            lineNumber: 68,
                                             columnNumber: 19
                                         }, undefined)
                                     ]
                                 }, void 0, true)
                             }, void 0, false, {
                                 fileName: "src/components/MainView/MainView.jsx",
-                                lineNumber: 56,
+                                lineNumber: 58,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 55,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/MainView/MainView.jsx",
-                    lineNumber: 52,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/login",
-                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-                                onLoggedIn: (user, token)=>{
-                                    setUser(user);
-                                    setToken(token);
-                                }
-                            }, void 0, false, void 0, void 0)
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                    to: "/"
+                                }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                                    onLoggedIn: (user, token)=>{
+                                        setUser(user);
+                                        setToken(token);
+                                    }
+                                }, void 0, false, void 0, void 0)
+                            }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 74,
+                            lineNumber: 76,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27334,7 +27333,7 @@ const MainView = ()=>{
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 81,
+                            lineNumber: 94,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27345,7 +27344,7 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 85,
+                            lineNumber: 98,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27358,7 +27357,7 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 89,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27369,7 +27368,7 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 93,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27394,28 +27393,28 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/MainView/MainView.jsx",
-                            lineNumber: 97,
+                            lineNumber: 110,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/MainView/MainView.jsx",
-                    lineNumber: 73,
+                    lineNumber: 75,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/MainView/MainView.jsx",
-            lineNumber: 51,
+            lineNumber: 53,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/MainView/MainView.jsx",
-        lineNumber: 50,
+        lineNumber: 52,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "bS37f/MewLep4+CoJ/S/tZJLoIM=");
+_s(MainView, "vuapt91VwKJvxd+slw/ig4h+qVo=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

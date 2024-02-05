@@ -76,18 +76,21 @@ export const MainView = () => {
           <Route
             path="/login"
             element={
-              user ? (
-                <Navigate to="/" replace />
-              ) : (
-                <LoginView onLoggedIn={(user, token) => {
-                  setUser(user);
-                  setToken(token);
-                  
-                  localStorage.setItem("token", token);
-                }} />
-              )
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <LoginView
+                  onLoggedIn={(user, token) => {
+                    setUser(user);
+                    setToken(token);
+                  }}
+                  />
+                )}
+              </>
             }
           />
+                 
           <Route
             path="/signup"
             element={<SignupView />}
