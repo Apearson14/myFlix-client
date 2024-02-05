@@ -15,8 +15,7 @@ export const MovieCard = ({ movie, onMovieClick, onToggleFavorite }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Img src={movie.image} />
         <Card.Text>{movie.description}</Card.Text>
-        <Card.Text>{movie.genre.name}</Card.Text>
-        <Card.Text>{movie.director.name}</Card.Text>
+
 
         <Button onClick={handleFavoriteClick}>Favorite</Button>
       </Card.Body>
