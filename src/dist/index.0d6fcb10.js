@@ -34504,12 +34504,27 @@ const MovieCard = ({ movie, onMovieClick, onToggleFavorite })=>{
                     lineNumber: 17,
                     columnNumber: 9
                 }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Link, {
+                    to: `/movies/${encodeURIComponent(movie._id)}`,
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                        variant: "link",
+                        children: "Details"
+                    }, void 0, false, {
+                        fileName: "src/components/MovieCard/MovieCard.jsx",
+                        lineNumber: 19,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/MovieCard/MovieCard.jsx",
+                    lineNumber: 18,
+                    columnNumber: 9
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                     onClick: handleFavoriteClick,
                     children: "Favorite"
                 }, void 0, false, {
                     fileName: "src/components/MovieCard/MovieCard.jsx",
-                    lineNumber: 20,
+                    lineNumber: 22,
                     columnNumber: 9
                 }, undefined)
             ]

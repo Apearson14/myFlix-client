@@ -15,8 +15,10 @@ export const MovieCard = ({ movie, onMovieClick, onToggleFavorite }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Img src={movie.image} />
         <Card.Text>{movie.description}</Card.Text>
-
-
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button variant="link">Details</Button>
+        </Link>
+        
         <Button onClick={handleFavoriteClick}>Favorite</Button>
       </Card.Body>
     </Card>
