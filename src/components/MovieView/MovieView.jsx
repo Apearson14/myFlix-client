@@ -1,9 +1,16 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export const MovieView = ({ movie, onBackClick, onToggleFavorite }) => {
+export const MovieView = ({ movies, onBackClick, onToggleFavorite }) => {
+  const { movieId } = useParams(); 
+  const movie = movies.find((m) => m._id === movieId); 
+
+  
+  if (!movie) return null; 
+
   const handleFavoriteClick = () => {
-    // Call the onToggleFavorite function and pass the movie as an argument
     onToggleFavorite(movie);
   };
 
@@ -26,8 +33,9 @@ export const MovieView = ({ movie, onBackClick, onToggleFavorite }) => {
             <h3>Description:</h3>
             <p>{movie.description}</p>
           </div>
-          <Button onClick={onBackClick}>Back</Button>
-
+          <Link to={"/"}>
+            <Button variant="primary">Back</Button>
+          </Link>
           <Button onClick={handleFavoriteClick}>Favorite</Button>
         </Col>
       </Row>
