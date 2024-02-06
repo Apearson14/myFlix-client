@@ -27197,7 +27197,7 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [movies, setMovies] = (0, _react.useState)([]);
     // useEffect to fetch movies if token is present
-    useEffect(()=>{
+    (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch("https://austins-movies-98c87d76c471.herokuapp.com/movies", {
             headers: {
