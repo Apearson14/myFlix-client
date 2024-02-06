@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react"; 
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 export const ProfileView = ({ movies, onUpdateUser, onDeregister }) => {
-  const { username } = useParams();
-  const [user, setUser] = useState(null);
+  
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(storedUser ? storedUser : null);
   const [editMode, setEditMode] = useState(false);
   const [updatedUser, setUpdatedUser] = useState({
     username: "",
@@ -12,18 +13,6 @@ export const ProfileView = ({ movies, onUpdateUser, onDeregister }) => {
     email: "",
     birthday: "",
   });
-
-  useEffect(() => {
-    // Fetch user information based on the logged-in username
-    fetch(`https://austins-movies-98c87d76c471.herokuapp.com/users/${username}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setUser(data))
-      .catch((error) => console.error("Error fetching user:", error));
-  }, [username]);
 
   const handleUpdate = () => {
     // Perform update user API call with updatedUser data

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieView } from "../MovieView/MovieView";
@@ -12,8 +12,9 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
   const [token, setToken] = useState(storedToken || null);
 
-  // Additional state initialization for user and movies
-  const [user, setUser] = useState(null);
+  // Adjusted state initialization for user using localStorage
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(storedUser ? storedUser : null);
   const [movies, setMovies] = useState([]);
 
   // useEffect to fetch movies if token is present
